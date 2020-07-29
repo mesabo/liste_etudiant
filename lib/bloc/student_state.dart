@@ -9,6 +9,8 @@ abstract class StudentState extends Equatable {
   List<Object> get props => [];
 }
 
+///[LOADING_STATES]
+
 class StudentInitial extends StudentState {}
 
 class StudentLoadingProgress extends StudentState {}
@@ -23,8 +25,17 @@ class StudentLoadSuccess extends StudentState {
 
 class StudentLoadFailure extends StudentState {}
 
+
+///[CREATING_STATES]
 class StudentCreatingProgress extends StudentState {}
 
-class StudentCreateSuccess extends StudentState {}
+class StudentCreateSuccess extends StudentState {
+  final Student student;
+
+  const StudentCreateSuccess({@required this.student})
+      : assert(student != null);
+
+  List<Object> get props => [student];
+}
 
 class StudentCreateFailure extends StudentState {}
